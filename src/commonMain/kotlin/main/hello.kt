@@ -1,13 +1,11 @@
 package main
 
-import hello.*
 import jni.*
 import kotlinx.cinterop.*
 
 @CName("Java_main_HELLO_invoke")
 fun hello(env: CPointer<JNIEnvVar>, obj: jobject, from: jstring, repeat: jint): Int {
     val from = env.getString(from)
-    HELLO()
     repeat(repeat) {
         println("Hello World from ${"JNI: $from"}.")
     }
